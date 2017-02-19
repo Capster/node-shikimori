@@ -14,7 +14,7 @@
     "url": "https://github.com/Capster/node-shikimori/issues"
   },
   "author": "Capster <m6277@me.com>",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "request": "^2.79.0"
   }
