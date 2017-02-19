@@ -1,14 +1,17 @@
 {
   "name": "node-shikimori",
   "version": "1.0.0",
-  "description": "A node.js wrapper for the shikimori.org API",
+  "description": "A node.js wrapper for the http://shikimori.org API",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/Capster/node-shikimori"
+  },
+  "bugs": {
+    "url": "https://github.com/Capster/node-shikimori/issues"
   },
   "author": "Capster <m6277@me.com>",
   "license": "ISC",
