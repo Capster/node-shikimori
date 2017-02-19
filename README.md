@@ -1,5 +1,8 @@
 # node-shikimori
 
+[![npm version](https://img.shields.io/npm/v/node-shikimori.svg)](https://www.npmjs.com/package/node-shikimori)
+[![npm dependencies](https://david-dm.org/capster/node-shikimori.svg)](https://david-dm.org/capster/node-shikimori)
+
 A Node.JS module, which provides an object oriented wrapper for the [Shikimori.org API](https://shikimori.org/api/doc/1.0).
 
 Pull requests are always very welcome.
