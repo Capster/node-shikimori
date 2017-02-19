@@ -1,5 +1,5 @@
 {
-  "name": "node-shikimori",
+  "name": "shikimori",
   "version": "1.0.0",
   "description": "A node.js wrapper for the http://shikimori.org API",
   "main": "index.js",
