@@ -1,0 +1,18 @@
+{
+  "name": "node-shikimori",
+  "version": "1.0.0",
+  "description": "A node.js wrapper for the shikimori.org API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "Capster <m6277@me.com>",
+  "license": "ISC",
+  "dependencies": {
+    "request": "^2.79.0"
+  }
+}
