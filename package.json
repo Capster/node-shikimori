@@ -1,6 +1,6 @@
 {
-  "name": "shikimori",
-  "version": "1.0.1",
+  "name": "node-shikimori",
+  "version": "1.0.2",
   "description": "A node.js wrapper for the http://shikimori.org API",
   "main": "index.js",
   "scripts": {
