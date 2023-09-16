@@ -1,10 +1,11 @@
 {
   "name": "node-shikimori",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "description": "A node.js wrapper for the http://shikimori.org API",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsup src/index.ts --format esm,cjs --dts"
   },
   "repository": {
     "type": "git",
@@ -15,7 +16,9 @@
   },
   "author": "Capster <m6277@me.com>",
   "license": "MIT",
-  "dependencies": {
-    "request": "^2.79.0"
+  "devDependencies": {
+    "@types/node": "^20.5.9",
+    "tsup": "^7.2.0",
+    "typescript": "^5.2.2"
   }
 }
