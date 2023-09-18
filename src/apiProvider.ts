@@ -17,6 +17,7 @@ export interface ClientOptions {
 }
 
 export type AccessToken = string | undefined;
+export type RequestMethod = 'GET' | 'POST' | 'PATCH' | 'PUT' | 'DELETE';
 
 export const apiProvider = (options: ClientOptions = {
   clientName: DEFAULT_USER_AGENT,
@@ -27,7 +28,7 @@ export const apiProvider = (options: ClientOptions = {
 
   let accessToken: AccessToken  = options.token;
 
-  const apiRequest = async (type: string, endpoint: string, params: ParsedUrlQueryInput) => {
+  const apiRequest = async (type: RequestMethod, endpoint: string, params: ParsedUrlQueryInput) => {
     let fullPath = path.join('/api', endpoint);
     if (params !== undefined) {
       fullPath += '?' + querystring.stringify(params);
@@ -51,16 +52,5 @@ export const apiProvider = (options: ClientOptions = {
     accessToken = token;
   }
 
-  const createMethod = (name: string) => (method: string, params: ParsedUrlQueryInput) => (
-    apiRequest(name, method, params)
-  );
-
-  return {
-    setAccessToken,
-    get: createMethod("GET"),
-    post: createMethod("POST"),
-    patch: createMethod("PATCH"),
-    put: createMethod("PUT"),
-    delete: createMethod("DELETE"),
-  };
+  return [apiRequest, setAccessToken];
 };
