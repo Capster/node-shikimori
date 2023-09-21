@@ -1,4 +1,4 @@
-import { UserBasic, UserId } from "./user";
+import { UserBasic, UserId } from "./User";
 
 export type CommentableType = 'Topic'
   | 'User'
@@ -31,3 +31,4 @@ export interface Comment {
 }
 
 export type CommentBasic = Pick<Comment, 'id' | 'commentable_id' | 'commentable_type' | 'body' | 'user_id' | 'created_at' | 'updated_at' | 'is_offtopic'>;
+export type CommentTemplate = Pick<Comment, 'body' | 'commentable_id' | 'commentable_type' | 'is_offtopic'>;

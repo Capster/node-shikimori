@@ -1,8 +1,9 @@
-import { DateTime, Linkable, LinkedId, LinkedType } from ".";
-import { UserBasic } from "./user";
+import { DateTime, Linkable, LinkedId, LinkedType } from "./common";
+import { UserBasic } from "./User";
 
 export type MessageId = number;
 export type MessageKind = 'Private' | 'FriendRequest' | 'anons' | 'ongoing' | 'released';
+export type MessageType = 'inbox' | 'private' | 'sent' | 'news' | 'notifications';
 
 export interface Message<T extends Linkable = Linkable> {
   id: MessageId,

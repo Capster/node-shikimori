@@ -1,6 +1,6 @@
-import { DateTime, Linkable, LinkedId, LinkedType } from ".";
-import { Forum } from "./forum";
-import { UserBasic } from "./user";
+import { DateTime, Linkable, LinkedId, LinkedType } from "./common";
+import { Forum } from "./Forum";
+import { UserBasic } from "./User";
 
 export type TopicId = number;
 export type TopicEventType = 'episode'
@@ -10,6 +10,20 @@ export type TopicEventType = 'episode'
   | 'SiteNews'
   | ''
   | null;
+export type TopicForum = 'all'
+  | 'animanga'
+  | 'site'
+  | 'games'
+  | 'vn'
+  | 'contests'
+  | 'offtopic'
+  | 'clubs'
+  | 'my_clubs'
+  | 'critiques'
+  | 'news'
+  | 'collections'
+  | 'articles'
+  | 'cosplay';
 export type TopicType = 'Topic'
   | 'Topics::ClubUserTopic'
   | 'Topics::EntryTopic'

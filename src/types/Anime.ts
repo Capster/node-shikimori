@@ -1,12 +1,13 @@
-import { DateTime } from ".";
-import { Content } from "./content";
-import { Genre } from "./genre";
-import { ImageSet } from "./image";
-import { Studio } from "./studio";
-import { Video } from "./video";
+import { DateTime } from "./common";
+import { Content } from "./Content";
+import { Genre } from "./Genre";
+import { ImageSet } from "./Image";
+import { Studio } from "./Studio";
+import { Video } from "./Video";
 
 export type AnimeId = number;
 export type AnimeStatus = 'anons' | 'ongoing' | 'released';
+export type AnimeTopicKind = AnimeStatus | 'episode';
 export type AnimeRating = 'none' | 'g' | 'pg' | 'pg_13' | 'r' | 'r_plus' | 'rx';
 export type AnimeKind = 'tv'
   | 'movie'

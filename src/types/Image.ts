@@ -12,3 +12,5 @@ export interface Image {
   can_destroy: boolean,
   user_id: number,
 }
+
+export type Screenshot = Record<'original' | 'preview', string>;

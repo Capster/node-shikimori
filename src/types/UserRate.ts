@@ -1,8 +1,8 @@
-import { DateTime } from ".";
-import { AnimeId } from "./anime";
-import { MangaId } from "./manga";
-import { RanobeId } from "./ranobe";
-import { UserId } from "./user";
+import { DateTime } from "./common";
+import { AnimeBasic, AnimeId } from "./Anime";
+import { MangaBasic, MangaId } from "./Manga";
+import { RanobeId } from "./Ranobe";
+import { UserBasic, UserId } from "./User";
 
 export type UserRateId = number;
 export type UserRateType = 'planned' | 'watching' | 'completed' | 'rewatching' | 'on_hold' | 'dropped';
@@ -22,6 +22,12 @@ export interface UserRate {
   text_html: string | null,
   created_at: DateTime,
   updated_at: DateTime,
+}
+
+export interface UserRateExtended<T extends AnimeBasic | MangaBasic> extends UserRate {
+  user: UserBasic,
+  anime: T extends AnimeBasic ? AnimeBasic : null,
+  manga: T extends MangaBasic ? MangaBasic : null,
 }
 
 export type UserRateBasic = Omit<UserRate, 'user_id' | 'target_id' | 'target_type'>;

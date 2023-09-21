@@ -1,10 +1,11 @@
-import { DateTime, Linkable } from ".";
-import { AnimeBasic } from "./anime";
-import { CharacterBasic } from "./character";
-import { ImageSet } from "./image";
-import { MangaBasic } from "./manga";
-import { TopicId } from "./topic";
+import { DateTime, Linkable } from "./common";
+import { AnimeBasic } from "./Anime";
+import { CharacterBasic } from "./Character";
+import { ImageSet } from "./Image";
+import { MangaBasic } from "./Manga";
+import { TopicId } from "./Topic";
 
+export type PersonKind = 'seyu' | 'mangaka' | 'producer';
 export type PersonVitalDay = Record<'day' | 'month' | 'year', number>;
 export type PersonGroupedRole = [string, number];
 

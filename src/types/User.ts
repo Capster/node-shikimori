@@ -1,7 +1,9 @@
-import { DateTime } from ".";
-import { ImageSet } from "./image";
+import { AnimeBasic } from "./Anime";
+import { DateTime } from "./common";
+import { ImageSet } from "./Image";
+import { MangaBasic } from "./Manga";
 
-export type UserId = number;
+export type UserId = number | string;
 
 export interface User {
   id: UserId,
@@ -58,4 +60,24 @@ interface UserStats {
   studios: unknown[],
   publishers: unknown[],
   activity: UserActivity[],
+}
+
+export interface UserFavourite {
+  id: number,
+  name: string
+}
+
+export type UserHistoryRecordId = number;
+
+export interface UserHistoryRecord {
+  id: UserHistoryRecordId,
+  created_at: DateTime,
+  description: string,
+  target: AnimeBasic | MangaBasic | null,
+}
+
+export interface UserUnreadMessages {
+  messages: number,
+  news: number,
+  notifications: number,
 }
