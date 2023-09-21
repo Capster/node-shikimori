@@ -1,5 +1,5 @@
-import { CommentBasic } from "./comment";
-import { UserId, UserBasic } from "./user";
+import { CommentBasic } from "./Comment";
+import { UserId, UserBasic } from "./User";
 
 export type BanId = number;
 

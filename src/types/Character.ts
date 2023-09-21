@@ -1,9 +1,9 @@
-import { DateTime, Linkable } from ".";
-import { AnimeBasic } from "./anime";
-import { ImageSet } from "./image";
-import { MangaBasic } from "./manga";
-import { PersonBasic } from "./person";
-import { TopicId } from "./topic";
+import { DateTime, Linkable } from "./common";
+import { AnimeBasic } from "./Anime";
+import { ImageSet } from "./Image";
+import { MangaBasic } from "./Manga";
+import { PersonBasic } from "./Person";
+import { TopicId } from "./Topic";
 
 export type RoleBased<T> = T & {
   role: string,

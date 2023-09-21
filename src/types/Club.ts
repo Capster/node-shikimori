@@ -1,11 +1,11 @@
-import { Linkable } from ".";
-import { AnimeBasic } from "./anime";
-import { CharacterBasic } from "./character";
-import { Image, ImageSet } from "./image";
-import { MangaBasic } from "./manga";
-import { StyleId } from "./style";
-import { TopicId } from "./topic";
-import { UserBasic } from "./user";
+import { Linkable } from "./common";
+import { AnimeBasic } from "./Anime";
+import { CharacterBasic } from "./Character";
+import { Image, ImageSet } from "./Image";
+import { MangaBasic } from "./Manga";
+import { StyleId } from "./Style";
+import { TopicId } from "./Topic";
+import { UserBasic } from "./User";
 
 export type ClubId = number;
 export type ClubTopicPolicy = 'members' | 'admins';

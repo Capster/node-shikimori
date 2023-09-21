@@ -1,4 +1,4 @@
-import { TopicId } from "./topic";
+import { TopicId } from "./Topic";
 
 export interface IgnoreNotice {
   topic_id: TopicId,

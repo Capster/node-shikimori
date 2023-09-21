@@ -1,7 +1,7 @@
-import { DateTime, Linkable } from ".";
-import { AnimeId } from "./anime";
-import { MangaId } from "./manga";
-import { UserId } from "./user";
+import { DateTime, Linkable } from "./common";
+import { AnimeId } from "./Anime";
+import { MangaId } from "./Manga";
+import { UserId } from "./User";
 
 export type ReviewId = number;
 export type ReviewOpinion = 'positive' | 'neutral' | 'negative';

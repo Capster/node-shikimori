@@ -1,4 +1,4 @@
-import { DateTime } from ".";
+import { DateTime } from "./common";
 
 export type StyleId = number;
 

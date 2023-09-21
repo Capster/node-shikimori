@@ -1,7 +1,7 @@
-import { ImageSet } from "./image";
-import { Publisher } from "./publisher";
-import { TopicId } from "./topic";
-import { UserRateBasic } from "./user-rate";
+import { ImageSet } from "./Image";
+import { Publisher } from "./Publisher";
+import { TopicId } from "./Topic";
+import { UserRateBasic } from "./UserRate";
 
 export interface RateStatusStat {
   name: string,

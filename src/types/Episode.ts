@@ -1,5 +1,5 @@
-import { DateTime } from ".";
-import { AnimeBasic } from "./anime";
+import { DateTime } from "./common";
+import { AnimeBasic } from "./Anime";
 
 export interface Episode {
   next_episode: number,

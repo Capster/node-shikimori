@@ -1,5 +1,5 @@
-import { DateTime } from ".";
-import { UserId } from "./user";
+import { DateTime } from "./common";
+import { UserId } from "./User";
 
 export type AchievementId = number;
 

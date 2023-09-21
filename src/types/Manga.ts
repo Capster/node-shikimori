@@ -1,6 +1,6 @@
-import { Content } from "./content";
-import { Genre } from "./genre";
-import { Publisher } from "./publisher";
+import { Content } from "./Content";
+import { Genre } from "./Genre";
+import { Publisher } from "./Publisher";
 
 export type MangaId = number;
 export type MangaStatus = 'anons' | 'ongoing' | 'released' | 'paused' | 'discontinued';
