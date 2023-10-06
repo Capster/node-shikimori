@@ -1,16 +1,14 @@
 import { BASE_URL } from "./constants";
-import { ShikimoriError } from "./ShikimoriError";
+import { APIError } from "./error";
 
-export const request = async (path: string, options: RequestInit) => {
+export const request = async (path: string, options: RequestInit): Promise<any> => {
   const url = new URL(path, BASE_URL);
   const response = await fetch(url, options);
   if (!response.ok) {
-    throw new ShikimoriError('Bad response', response);
+    throw new APIError('Bad response', response);
   }
   const text = await response.text();
-  if (text) {
-    return JSON.parse(text);
-  }
+  return JSON.parse(text) ?? null;
 };
 
 const MILLISECONDS_IN_SECOND = 1_000;
@@ -22,7 +20,7 @@ export const limitedRequest = (maxCallsPerSecond: number, maxCallsPerMinute: num
   let secondStart = Date.now();
   let minuteStart = Date.now();
 
-  return (path: string, options: RequestInit) => {
+  return (path: string, options: RequestInit): Promise<any> => {
     const now = Date.now();
 
     if (now - secondStart >= MILLISECONDS_IN_SECOND) {
@@ -39,13 +37,13 @@ export const limitedRequest = (maxCallsPerSecond: number, maxCallsPerMinute: num
     minuteFetchCount++;
 
     if (secondFetchCount > maxCallsPerSecond) {
-      throw new ShikimoriError('Maximum fetch requests per second exceeded', null);
+      throw new APIError('Maximum fetch requests per second exceeded', null);
     }
 
     if (minuteFetchCount > maxCallsPerMinute) {
-      throw new ShikimoriError('Maximum fetch requests per minute exceeded', null);
+      throw new APIError('Maximum fetch requests per minute exceeded', null);
     }
 
-    return request(path, options)
+    return request(path, options);
   }
 }
