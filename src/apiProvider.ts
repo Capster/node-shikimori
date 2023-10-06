@@ -1,5 +1,5 @@
-import querystring, { ParsedUrlQueryInput } from 'querystring';
-import path from 'path';
+import { ParsedUrlQueryInput, stringify } from 'querystring';
+import { join } from 'path';
 
 import { limitedRequest } from './limitedRequest';
 import {
@@ -8,30 +8,64 @@ import {
   MAX_CALLS_PER_SECOND,
 } from './constants';
 
+/** Options for configuring a Shikimori wrapper */
 export interface ClientOptions {
-  token?: AccessToken,
-  tokenType?: string,
+  /** An optional `Token` representing an existing access token to use for authentication */
+  token?: Token,
+  /**
+   * Represents a user agent used to send requests
+   * @defaultValue 'node-shikimori'
+   */
   clientName: string,
+  /**
+   * A number representing the maximum number of API calls allowed per second
+   * @defaultValue 5
+   */
   maxCallsPerSecond: number,
+  /**
+   * A number representing the maximum number of API calls allowed per minute
+   * @defaultValue 90
+   */
   maxCallsPerMinute: number,
 }
 
-export type AccessToken = string | undefined;
+/**
+ * Represents an OAuth2 access token, which is a string value that grants access to protected resources.
+ * If undefined, the client does not have an access token.
+ */
+export type Token = string | undefined;
+
+
+/** @interface */
+export type RequestMethods = Record<'get' | 'post' | 'patch' | '_delete', HTTPMethod>;
+type HTTPMethod = (...args: [path: string, params: any]) => Promise<any>;
+
 export type RequestMethod = 'GET' | 'POST' | 'PATCH' | 'PUT' | 'DELETE';
+export type RequestHandler = (
+  method: RequestMethod,
+  path: string,
+  params: ParsedUrlQueryInput
+) => Promise<any>;
+
+export const httpMethods = (request: RequestHandler): RequestMethods => ({
+  get: request.bind(null, 'GET'),
+  post: request.bind(null, 'POST'),
+  patch: request.bind(null, 'PATCH'),
+  _delete: request.bind(null, 'DELETE'),
+});
 
 export const apiProvider = (options: ClientOptions = {
   clientName: DEFAULT_USER_AGENT,
   maxCallsPerSecond: MAX_CALLS_PER_SECOND,
   maxCallsPerMinute: MAX_CALLS_PER_MINUTE,
-}) => {
+}): [RequestHandler, (token: string) => void] => {
   const request = limitedRequest(options.maxCallsPerSecond, options.maxCallsPerMinute);
+  let accessToken: Token  = options.token;
 
-  let accessToken: AccessToken  = options.token;
-
-  const apiRequest = async (type: RequestMethod, endpoint: string, params: ParsedUrlQueryInput) => {
-    let fullPath = path.join('/api', endpoint);
+  const apiRequest: RequestHandler = async (type, endpoint, params): Promise<any> => {
+    let fullPath = join('/api', endpoint);
     if (params !== undefined) {
-      fullPath += '?' + querystring.stringify(params);
+      fullPath += '?' + stringify(params);
     }
 
     const headers = new Headers({
@@ -48,9 +82,9 @@ export const apiProvider = (options: ClientOptions = {
     });
   };
 
-  const setAccessToken = (token: AccessToken) => {
+  const setAccessToken = (token: Token) => {
     accessToken = token;
-  }
+  };
 
   return [apiRequest, setAccessToken];
 };

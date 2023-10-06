@@ -1,3 +1,7 @@
-export * from './Shikimori';
-export { auth as shikimoriAuth } from './auth';
-export * from './ShikimoriError';
+export { ClientOptions, Token } from './apiProvider';
+export * from './constants';
+export * from './types';
+export * from './endpoints';
+export * from './client';
+export * from './auth';
+export * from './error';
