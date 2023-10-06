@@ -19,4 +19,5 @@ export interface Message<T extends Linkable = Linkable> {
   to: UserBasic,
 }
 
+/** @interface */
 export type MessageBasic = Omit<Message, 'from' | 'to'>;

@@ -1,5 +1,5 @@
 export interface ImageSet {
-  [x: string]: string | undefined;
+  [size: string]: string | undefined;
 }
 
 export type ImageId = number;
@@ -13,4 +13,5 @@ export interface Image {
   user_id: number,
 }
 
+/** @interface */
 export type Screenshot = Record<'original' | 'preview', string>;

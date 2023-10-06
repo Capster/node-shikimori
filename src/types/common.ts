@@ -1,4 +1,6 @@
+/** @interface */
 export type Notice = Record<'notice', string>;
+/** @interface */
 export type NoticeSuccess = Notice & Record<'success', boolean>;
 
 export type DateTime = string;

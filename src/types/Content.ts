@@ -8,6 +8,7 @@ export interface RateStatusStat {
   value: number,
 }
 
+/** @interface */
 export type RateScoreStat = Record<'name' | 'value', number>;
 export type Day = string;
 
@@ -39,3 +40,9 @@ export interface Content {
   publishers: Publisher[],
   user_rate: UserRateBasic | null,
 }
+
+export interface ContentRelation {
+  relation: string,
+  relation_string: string,
+}
+

@@ -30,5 +30,7 @@ export interface Comment {
   user: UserBasic,
 }
 
+/** @interface */
 export type CommentBasic = Pick<Comment, 'id' | 'commentable_id' | 'commentable_type' | 'body' | 'user_id' | 'created_at' | 'updated_at' | 'is_offtopic'>;
+/** @interface */
 export type CommentTemplate = Pick<Comment, 'body' | 'commentable_id' | 'commentable_type' | 'is_offtopic'>;

@@ -1,11 +1,12 @@
-import { DateTime } from "./common";
-import { Content } from "./Content";
+import { DateTime, Linkable } from "./common";
+import { Content, ContentRelation } from "./Content";
 import { Genre } from "./Genre";
 import { ImageSet } from "./Image";
 import { Studio } from "./Studio";
 import { Video } from "./Video";
 
 export type AnimeId = number;
+export type AnimeDuration = 'S' | 'D' | 'F';
 export type AnimeStatus = 'anons' | 'ongoing' | 'released';
 export type AnimeTopicKind = AnimeStatus | 'episode';
 export type AnimeRating = 'none' | 'g' | 'pg' | 'pg_13' | 'r' | 'r_plus' | 'rx';
@@ -18,6 +19,18 @@ export type AnimeKind = 'tv'
   | 'tv_13'
   | 'tv_24'
   | 'tv_48';
+export type AnimeOrder = 'id'
+  | 'id_desc'
+  | 'ranked'
+  | 'kind'
+  | 'popularity'
+  | 'name'
+  | 'aired_on'
+  | 'episodes'
+  | 'status'
+  | 'random'
+  | 'created_at'
+  | 'created_at_desc';
 
 export interface Anime extends Content {
   id: AnimeId,
@@ -37,6 +50,10 @@ export interface Anime extends Content {
   screenshots: ImageSet[],
 }
 
+/** @interface */
+export type AnimeRelation = ContentRelation & Record<'anime', AnimeBasic>;
+
+/** @interface */
 export type AnimeBasic = Pick<Anime, 'id'
   | 'name'
   | 'russian'
@@ -49,4 +66,4 @@ export type AnimeBasic = Pick<Anime, 'id'
   | 'episodes_aired'
   | 'aired_on'
   | 'released_on'
->;
+> & Linkable;

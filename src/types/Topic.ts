@@ -63,6 +63,12 @@ export interface Topic<T extends Linkable = Linkable> {
   episode: number | null,
 }
 
+/** @interface */
 export type TopicBasic = Pick<Topic, 'id' | 'linked' | 'event' | 'episode' | 'created_at'> & {
   url: string
 };
+
+export interface TopicIgnore {
+  user_id: TopicId,
+  is_ignored: boolean,
+}

@@ -5,7 +5,7 @@ import { RanobeId } from "./Ranobe";
 import { UserBasic, UserId } from "./User";
 
 export type UserRateId = number;
-export type UserRateType = 'planned' | 'watching' | 'completed' | 'rewatching' | 'on_hold' | 'dropped';
+export type UserRateStatus = 'planned' | 'watching' | 'completed' | 'rewatching' | 'on_hold' | 'dropped';
 
 export interface UserRate {
   id: UserRateId,
@@ -13,7 +13,7 @@ export interface UserRate {
   target_id: AnimeId | MangaId | RanobeId,
   target_type: 'Anime' | 'Manga',
   score: number,
-  status: string,
+  status: UserRateStatus,
   rewatches: number,
   episodes: number,
   volumes: number,
@@ -30,4 +30,18 @@ export interface UserRateExtended<T extends AnimeBasic | MangaBasic> extends Use
   manga: T extends MangaBasic ? MangaBasic : null,
 }
 
+export interface UserRateTemplate {
+  user_id: UserId,
+  target_id: AnimeId | MangaId | RanobeId,
+  target_type: 'Anime' | 'Manga',
+  score?: number,
+  status?: UserRateStatus,
+  rewatches?: number,
+  episodes?: number,
+  volumes?: number,
+  chapters?: number,
+  text?: string | null,
+}
+
+/** @interface */
 export type UserRateBasic = Omit<UserRate, 'user_id' | 'target_id' | 'target_type'>;

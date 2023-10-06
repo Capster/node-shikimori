@@ -29,9 +29,10 @@ export interface User {
   style_id: number | null,
 }
 
+/** @interface */
 export type UserBasic = Pick<User, 'id' | 'nickname' | 'avatar' | 'image' | 'last_online_at' | 'url'>;
 
-interface UserStatsStatus {
+export interface UserStatsStatus {
   id: number,
   grouped_id: string,
   name: string,
@@ -64,8 +65,14 @@ interface UserStats {
 
 export interface UserFavourite {
   id: number,
-  name: string
+  name: string,
+  russian: string,
+  image: string,
+  url: null,
 }
+
+/** @interface */
+export type UserFavourites = Record<'animes' | 'mangas' | 'ranobe' | 'characters' | 'people' | 'mangakas' | 'seyu' | 'producers', UserFavourite>;
 
 export type UserHistoryRecordId = number;
 
@@ -80,4 +87,9 @@ export interface UserUnreadMessages {
   messages: number,
   news: number,
   notifications: number,
+}
+
+export interface UserIgnore {
+  user_id: UserId,
+  is_ignored: boolean,
 }

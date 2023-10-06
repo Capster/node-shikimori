@@ -5,6 +5,7 @@ import { MangaBasic } from "./Manga";
 import { PersonBasic } from "./Person";
 import { TopicId } from "./Topic";
 
+/** @interface */
 export type RoleBased<T> = T & {
   role: string,
   roles: string[],
@@ -32,4 +33,5 @@ export interface Character {
   mangas: RoleBased<MangaBasic>[],
 }
 
+/** @interface */
 export type CharacterBasic = Pick<Character, 'id' | 'name' | 'russian' | 'image' | 'url'> & Linkable;

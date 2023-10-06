@@ -13,6 +13,14 @@ export type ClubImageUploadPolicy = 'members' | 'admins';
 export type ClubCommentPolicy = 'free' | 'members' | 'admins';
 export type ClubJoinPolicy = 'free' | 'member_invite' | 'admin_invite' | 'owner_invite';
 
+export interface ClubUpdateTemplate {
+  name?: string,
+  description?: string | null,
+  comment_policy?: ClubCommentPolicy,
+  topic_policy?: ClubTopicPolicy,
+  image_upload_policy?: ClubImageUploadPolicy,
+}
+
 export interface Club {
   id: ClubId,
   name: string,
@@ -33,4 +41,5 @@ export interface Club {
   characters: CharacterBasic[],
 }
 
+/** @interface */
 export type ClubBasic = Pick<Club, 'id' | 'name' | 'logo' | 'is_censored' | 'join_policy' | 'comment_policy'> & Linkable;

@@ -6,6 +6,7 @@ import { MangaBasic } from "./Manga";
 import { TopicId } from "./Topic";
 
 export type PersonKind = 'seyu' | 'mangaka' | 'producer';
+/** @interface */
 export type PersonVitalDay = Record<'day' | 'month' | 'year', number>;
 export type PersonGroupedRole = [string, number];
 
@@ -49,4 +50,5 @@ export interface Person {
   birthday: PersonVitalDay | null,
 }
 
+/** @interface */
 export type PersonBasic = Pick<Person, 'id' | 'name' | 'russian' | 'image' | 'url'> & Linkable;
