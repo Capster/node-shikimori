@@ -1,0 +1,8 @@
+{
+  "out": "docs",
+  "plugin": ["@mxssfd/typedoc-theme"],
+  "theme": "my-theme",
+  "entryPoints": [
+    "src/index.ts"
+  ]
+}
