@@ -19,8 +19,8 @@ jobs:
         with:
           node-version: 18
 
-      - name: Install packages
-        run: npm ci
+      - name: Install dependencies and build
+        uses: bahmutov/npm-install@v1
 
       - name: Build a package
         run: npm run build
