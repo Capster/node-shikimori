@@ -1,4 +1,4 @@
-name: Documentation Generation
+name: Genereate Docs and Deploy to Pages
 on:
   push:
     branches:

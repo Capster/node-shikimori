@@ -38,9 +38,11 @@ import { client } from 'node-shikimori';
 
 const shikimori = client({});
 
-shikimori.animes.byId({
+const result = await shikimori.animes.byId({
     id: 1
-}).then(console.log);
+});
+
+console.log(result);
 ```
 
 ## Authorization
@@ -62,7 +64,7 @@ const { getAccessToken } = auth({
     client_secret: 'YOUR_CLIENT_SECTET',
 });
 
-const accessToken = getAccessToken('YOUR_AUTH_CODE');
+const accessToken = await getAccessToken('YOUR_AUTH_CODE');
 ```
 
 4. **Use access token to access protected resources:** Finally, your application can use the access token to access the user's protected resources. Be sure to handle any errors or expired tokens gracefully.
@@ -70,12 +72,13 @@ const accessToken = getAccessToken('YOUR_AUTH_CODE');
 const shikimori = client();
 shikimori.setAccessToken(YOUR_ACCESS_TOKEN);
 
-shikimori.users.whoami().then(console.log);
+const currentUser = await shikimori.users.whoami();
+console.log(currentUser)
 ```
 
 5.**Refresh access token:** Access tokens have a limited lifespan of **1 day**, so your application will need to refresh them periodically to maintain access to the user's resources. To do this use a `refreshAccessToken` function with the refresh token. Shikimori will respond with a new access token and refresh token that your application can use to continue accessing the user's resources.
 ```ts
-const newAccessToken = refreshAccessToken('YOUR_REFRESH_TOKEN');
+const newAccessToken = await refreshAccessToken('YOUR_REFRESH_TOKEN');
 ```
 
 ## Contribution
