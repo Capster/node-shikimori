@@ -2,7 +2,7 @@
 
 A TypeScript library that provides a simple and easy-to-use wrapper for accessing the [Shikimori API](https://shikimori.me/api/doc). The library supports all endpoints and types of the Shikimori API and provides OAuth2 authorization functionality using an access token.
 
-[![Build Status](https://img.shields.io/github/actions/workflow/status/Capster/node-shikimori/ci.yml)](https://github.com/Capster/node-shikimori/actions/)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/Capster/node-shikimori/run-build.yml)](https://github.com/Capster/node-shikimori/actions/)
 [![npm version](https://img.shields.io/npm/v/node-shikimori.svg)](https://www.npmjs.com/package/node-shikimori)
 [![License](https://img.shields.io/github/license/capster/node-shikimori)](https://github.com/Capster/node-shikimori/LICENSE)
 [![donate boosty](https://img.shields.io/badge/donate-boosty-blue.svg)](https://boosty.to/capster)
