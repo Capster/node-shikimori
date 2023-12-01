@@ -60,8 +60,8 @@ https://shikimori.me/oauth/authorize?client_id=CLIENT_ID&redirect_uri=REDIRECT_U
 import { auth } from 'node-shikimori';
 
 const { getAccessToken } = auth({
-    client_id: 'YOUR_CLIENT_ID',
-    client_secret: 'YOUR_CLIENT_SECTET',
+    clientId: 'YOUR_CLIENT_ID',
+    clientSecret: 'YOUR_CLIENT_SECTET',
 });
 
 const accessToken = await getAccessToken('YOUR_AUTH_CODE');
