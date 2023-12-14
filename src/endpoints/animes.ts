@@ -89,7 +89,7 @@ export const animes = ({ get }: RequestMethods) => {
    * @param params
    */
   const related = ({ id }: Id<AnimeId>): Promise<AnimeRelation[]> => (
-    get(`/animes/${id}/relation`, {})
+    get(`/animes/${id}/related`, {})
   );
 
   /**
