@@ -30,7 +30,7 @@ export const userRates = ({ get, post, patch, _delete }: RequestMethods) => {
    * @param params
    */
   const list = (params: UserRatesListParams): Promise<UserRateBasic[]> => (
-    get(`/v2/users_rates/`, params)
+    get(`/v2/user_rates/`, params)
   );
 
   /**
@@ -38,7 +38,7 @@ export const userRates = ({ get, post, patch, _delete }: RequestMethods) => {
    * @param params
    */
   const byId = ({ id }: Id<UserRateId>): Promise<UserRateBasic> => (
-    get(`/v2/users_rates/${id}`, {})
+    get(`/v2/user_rates/${id}`, {})
   );
 
   /**
@@ -48,7 +48,7 @@ export const userRates = ({ get, post, patch, _delete }: RequestMethods) => {
    * @param params
    */
   const create = (params: UserRateCreateParams): Promise<UserRateBasic> => (
-    post(`/v2/users_rates/`, params)
+    post(`/v2/user_rates/`, params)
   );
 
   /**
@@ -58,7 +58,7 @@ export const userRates = ({ get, post, patch, _delete }: RequestMethods) => {
    * @param params
    */
   const update = ({ id, ...params }: UserRateUpdateParams): Promise<UserRateBasic> => (
-    patch(`/v2/users_rates/${id}`, params)
+    patch(`/v2/user_rates/${id}`, params)
   );
 
   /**
@@ -68,7 +68,7 @@ export const userRates = ({ get, post, patch, _delete }: RequestMethods) => {
    * @param params
    */
   const increment = ({ id }: Id<UserRateId>): Promise<UserRateBasic> => (
-    post(`/v2/users_rates/${id}/increment`, {})
+    post(`/v2/user_rates/${id}/increment`, {})
   );
 
   /**
@@ -78,7 +78,7 @@ export const userRates = ({ get, post, patch, _delete }: RequestMethods) => {
    * @param params
    */
   const destroy = ({ id }: Id<UserRateId>): Promise<UserRateBasic> => (
-    _delete(`/v2/users_rates/${id}`, {})
+    _delete(`/v2/user_rates/${id}`, {})
   );
 
   return {
