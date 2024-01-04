@@ -1,5 +1,5 @@
 /** The base URL for the Shikimori API */
-export const BASE_URL = 'https://shikimori.me';
+export const BASE_URL = 'https://shikimori.one';
 /** The path to the OAuth2 token endpoint */
 export const TOKEN_PATH = '/oauth/token';
 /** The default user agent string used when making API requests */
