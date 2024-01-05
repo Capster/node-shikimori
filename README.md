@@ -36,7 +36,7 @@ To use the library, simply import it into your project and create an instance of
 ```typescript
 import { client } from 'node-shikimori';
 
-const shikimori = client({});
+const shikimori = client();
 
 const result = await shikimori.animes.byId({
     id: 1
