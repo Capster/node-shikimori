@@ -1,6 +1,3 @@
-import { ParsedUrlQueryInput, stringify } from 'querystring';
-import { join } from 'path';
-
 import { limitedRequest } from './limitedRequest';
 import {
   DEFAULT_USER_AGENT,
@@ -35,17 +32,16 @@ export interface ClientOptions {
  */
 export type Token = string | undefined;
 
-
 /** @interface */
 export type RequestMethods = Record<'get' | 'post' | 'patch' | '_delete', HTTPMethod>;
 type HTTPMethod = (...args: [path: string, params: any]) => Promise<any>;
 
+interface Params {
+  [key: string]: string;
+}
+
 export type RequestMethod = 'GET' | 'POST' | 'PATCH' | 'PUT' | 'DELETE';
-export type RequestHandler = (
-  method: RequestMethod,
-  path: string,
-  params: ParsedUrlQueryInput
-) => Promise<any>;
+export type RequestHandler = (method: RequestMethod, path: string, params: Params) => Promise<any>;
 
 export const httpMethods = (request: RequestHandler): RequestMethods => ({
   get: request.bind(null, 'GET'),
@@ -58,15 +54,13 @@ export const apiProvider = (options: ClientOptions = {
   clientName: DEFAULT_USER_AGENT,
   maxCallsPerSecond: MAX_CALLS_PER_SECOND,
   maxCallsPerMinute: MAX_CALLS_PER_MINUTE,
-}): [RequestHandler, (token: string) => void] => {
+}): [RequestHandler, (token: Token) => void] => {
   const request = limitedRequest(options.maxCallsPerSecond, options.maxCallsPerMinute);
-  let accessToken: Token  = options.token;
+  let accessToken: Token = options.token;
 
   const apiRequest: RequestHandler = async (type, endpoint, params): Promise<any> => {
-    let fullPath = join('/api', endpoint);
-    if (params !== undefined) {
-      fullPath += '?' + stringify(params);
-    }
+    const searchParams = new URLSearchParams(Object.entries(params));
+    const fullPath = `/api${endpoint}?${searchParams.toString()}`;
 
     const headers = new Headers({
       'User-Agent': options.clientName,
