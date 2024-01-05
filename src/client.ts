@@ -38,7 +38,7 @@ import {
  * @param options - The options to configure the client, including the base URL, OAuth2 credentials, etc.
  * @returns An object containing methods for interacting with various endpoints, as well as a function for setting the access token
  */
-export const client = (options: ClientOptions) => {
+export const client = (options: ClientOptions = {}) => {
   const [request, setAccessToken] = apiProvider(options);
   const methods = httpMethods(request);
 

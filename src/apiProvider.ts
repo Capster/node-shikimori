@@ -13,17 +13,17 @@ export interface ClientOptions {
    * Represents a user agent used to send requests
    * @defaultValue 'node-shikimori'
    */
-  clientName: string,
+  clientName?: string,
   /**
    * A number representing the maximum number of API calls allowed per second
    * @defaultValue 5
    */
-  maxCallsPerSecond: number,
+  maxCallsPerSecond?: number,
   /**
    * A number representing the maximum number of API calls allowed per minute
    * @defaultValue 90
    */
-  maxCallsPerMinute: number,
+  maxCallsPerMinute?: number,
 }
 
 /**
@@ -50,20 +50,21 @@ export const httpMethods = (request: RequestHandler): RequestMethods => ({
   _delete: request.bind(null, 'DELETE'),
 });
 
-export const apiProvider = (options: ClientOptions = {
-  clientName: DEFAULT_USER_AGENT,
-  maxCallsPerSecond: MAX_CALLS_PER_SECOND,
-  maxCallsPerMinute: MAX_CALLS_PER_MINUTE,
-}): [RequestHandler, (token: Token) => void] => {
-  const request = limitedRequest(options.maxCallsPerSecond, options.maxCallsPerMinute);
-  let accessToken: Token = options.token;
+export const apiProvider = ({
+  token,
+  clientName = DEFAULT_USER_AGENT,
+  maxCallsPerSecond = MAX_CALLS_PER_SECOND,
+  maxCallsPerMinute = MAX_CALLS_PER_MINUTE,
+}: ClientOptions): [RequestHandler, (token: Token) => void] => {
+  const request = limitedRequest(maxCallsPerSecond, maxCallsPerMinute);
+  let accessToken: Token = token;
 
   const apiRequest: RequestHandler = async (type, endpoint, params): Promise<any> => {
     const searchParams = new URLSearchParams(Object.entries(params));
     const fullPath = `/api${endpoint}?${searchParams.toString()}`;
 
     const headers = new Headers({
-      'User-Agent': options.clientName,
+      'User-Agent': clientName,
     });
 
     if (accessToken) {
