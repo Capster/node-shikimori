@@ -1,5 +1,7 @@
 # Shikimori API Wrapper
 
+[Русская версия](https://github.com/Capster/node-shikimori/blob/master/README.ru.md)
+
 A TypeScript library that provides a simple and easy-to-use wrapper for accessing the [Shikimori API](https://shikimori.me/api/doc). The library supports all endpoints and types of the Shikimori API and provides OAuth2 authorization functionality using an access token.
 
 [![Build Status](https://img.shields.io/github/actions/workflow/status/Capster/node-shikimori/run-build.yml)](https://github.com/Capster/node-shikimori/actions/)
@@ -85,4 +87,4 @@ const newAccessToken = await refreshAccessToken('YOUR_REFRESH_TOKEN');
 Contributions to this library are always welcome and highly encouraged.
 
 ## License
-This library is licensed under MIT. Please see [LICENSE](https://github.com/Capster/node-shikimori/LICENSE) for licensing details.
+This library is licensed under MIT. Please see [LICENSE](https://github.com/Capster/node-shikimori/blob/master/LICENSE) for licensing details.
