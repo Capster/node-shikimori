@@ -60,8 +60,14 @@ export const apiProvider = ({
   let accessToken: Token = token;
 
   const apiRequest: RequestHandler = async (type, endpoint, params): Promise<any> => {
-    const searchParams = new URLSearchParams(Object.entries(params));
-    const fullPath = `/api${endpoint}?${searchParams.toString()}`;
+    const shouldUseBodyParams = type !== 'GET';
+
+    let fullPath = `/api${endpoint}`;
+
+    if (!shouldUseBodyParams) {
+      const searchParams = new URLSearchParams(Object.entries(params));
+      fullPath += `?${searchParams}`;
+    }
 
     const headers = new Headers({
       'User-Agent': clientName,
@@ -71,9 +77,14 @@ export const apiProvider = ({
       headers.set('Authorization', `Bearer ${accessToken}`);
     }
 
+    if (shouldUseBodyParams && params) {
+      headers.set('Content-Type', 'application/json');
+    }
+
     return request(fullPath, {
       method: type,
       headers: headers,
+      body: shouldUseBodyParams && params ? JSON.stringify(params) : undefined,
     });
   };
 
