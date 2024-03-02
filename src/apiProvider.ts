@@ -60,13 +60,13 @@ export const apiProvider = ({
   let accessToken: Token = token;
 
   const apiRequest: RequestHandler = async (type, endpoint, params): Promise<any> => {
-    const inBodyParams = type !==  "GET"; // || type !== "HEAD"
+    const shouldUseBodyParams = type !== 'GET';
 
     let fullPath = `/api${endpoint}`;
 
-    if(!inBodyParams) {
+    if (!shouldUseBodyParams) {
       const searchParams = new URLSearchParams(Object.entries(params));
-      fullPath += "?" + searchParams
+      fullPath += `?${searchParams}`;
     }
 
     const headers = new Headers({
@@ -77,14 +77,14 @@ export const apiProvider = ({
       headers.set('Authorization', `Bearer ${accessToken}`);
     }
 
-    if(inBodyParams && params) {
-      headers.set('Content-Type', `application/json`);
+    if (shouldUseBodyParams && params) {
+      headers.set('Content-Type', 'application/json');
     }
 
     return request(fullPath, {
       method: type,
       headers: headers,
-      body: inBodyParams && params ? JSON.stringify(params) : undefined
+      body: shouldUseBodyParams && params ? JSON.stringify(params) : undefined,
     });
   };
 
