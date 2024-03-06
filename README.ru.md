@@ -1,6 +1,6 @@
 # Обертка над Shikimori API
 
-Библиотека TypeScript, предоставляющая простую и удобную оболочку для доступа к [Shikimori API](https://shikimori.me/api/doc). Библиотека поддерживает все эндпоинты и типы Shikimori API, а также предоставляет функциональность по OAuth2-авторизации с использованием access-токена.
+Библиотека TypeScript, предоставляющая простую и удобную оболочку для доступа к [Shikimori API](https://shikimori.one/api/doc). Библиотека поддерживает все эндпоинты и типы Shikimori API, а также предоставляет функциональность по OAuth2-авторизации с использованием access-токена.
 
 [![Build Status](https://img.shields.io/github/actions/workflow/status/Capster/node-shikimori/run-build.yml)](https://github.com/Capster/node-shikimori/actions/)
 [![npm version](https://img.shields.io/npm/v/node-shikimori.svg)](https://www.npmjs.com/package/node-shikimori)
@@ -18,7 +18,7 @@
 ## Документация
 Смотрите [документацию библиотеки](https://capster.github.io/node-shikimori) сгенерированную с помощью TypeDoc.
 
-Смотрите [официальную документацию](https://shikimori.me/api/doc) для Shikimori API.
+Смотрите [официальную документацию](https://shikimori.one/api/doc) для Shikimori API.
 
 ## Установка
 #### npm
@@ -46,13 +46,13 @@ console.log(result);
 ```
 
 ## Авторизация
-Более подробную информацию можно посмотреть в [Official Shikimori OAuth2 Guide](https://shikimori.me/oauth).
+Более подробную информацию можно посмотреть в [Official Shikimori OAuth2 Guide](https://shikimori.one/oauth).
 
-1. **Зарегистрируйте ваше [приложение Шикимори](https://shikimori.me/oauth/applications):** После регистрации вам будут выданы `client_id` и `client_secret` которые понадобятся для использования OAuth2.
+1. **Зарегистрируйте ваше [приложение Шикимори](https://shikimori.one/oauth/applications):** После регистрации вам будут выданы `client_id` и `client_secret` которые понадобятся для использования OAuth2.
 
 2. **Перенаправьте пользователя на эндпоинт авторизации в Шикимори:** Этот эндпоинт предложит ему предоставить вашему приложению доступ к своим данным. После того, как пользователь предоставит доступ, Шикимори перенаправит его обратно в ваше приложение с *кодом авторизации*.
 ```
-https://shikimori.me/oauth/authorize?client_id=CLIENT_ID&redirect_uri=REDIRECT_URI&response_type=code&scope=
+https://shikimori.one/oauth/authorize?client_id=CLIENT_ID&redirect_uri=REDIRECT_URI&response_type=code&scope=
 ```
 
 3. **Получите токен доступа:** Вашему приложению потребуется обменять *код авторизации* на `AccessToken`. Шикимори вернет вам персональный токен доступа, который ваше приложение может использовать для доступа к ограниченным ресурсам/эндпоинтам.
@@ -61,7 +61,7 @@ import { auth } from 'node-shikimori';
 
 const { getAccessToken } = auth({
     clientId: 'YOUR_CLIENT_ID',
-    clientSecret: 'YOUR_CLIENT_SECTET',
+    clientSecret: 'YOUR_CLIENT_SECRET',
 });
 
 const accessToken = await getAccessToken('YOUR_AUTH_CODE');
