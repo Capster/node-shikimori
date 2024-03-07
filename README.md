@@ -2,7 +2,7 @@
 
 [Русская версия](https://github.com/Capster/node-shikimori/blob/master/README.ru.md)
 
-A TypeScript library that provides a simple and easy-to-use wrapper for accessing the [Shikimori API](https://shikimori.me/api/doc). The library supports all endpoints and types of the Shikimori API and provides OAuth2 authorization functionality using an access token.
+A TypeScript library that provides a simple and easy-to-use wrapper for accessing the [Shikimori API](https://shikimori.one/api/doc). The library supports all endpoints and types of the Shikimori API and provides OAuth2 authorization functionality using an access token.
 
 [![Build Status](https://img.shields.io/github/actions/workflow/status/Capster/node-shikimori/run-build.yml)](https://github.com/Capster/node-shikimori/actions/)
 [![npm version](https://img.shields.io/npm/v/node-shikimori.svg)](https://www.npmjs.com/package/node-shikimori)
@@ -20,7 +20,7 @@ A TypeScript library that provides a simple and easy-to-use wrapper for accessin
 ## Documentation
 See the node-shikimori [API documentation](https://capster.github.io/node-shikimori) rendered with TypeDoc.
 
-See the [official documentation](https://shikimori.me/api/doc) for the Shikimori API.
+See the [official documentation](https://shikimori.one/api/doc) for the Shikimori API.
 
 ## Installation
 #### npm
@@ -48,13 +48,13 @@ console.log(result);
 ```
 
 ## Authorization
-For more additional information see the [Official Shikimori OAuth2 Guide](https://shikimori.me/oauth).
+For more additional information see the [Official Shikimori OAuth2 Guide](https://shikimori.one/oauth).
 
-1. **Register your [Shikimori Application](https://shikimori.me/oauth/applications):** This will provide you with a `client_id` and `client_secret` that you will need to use OAuth2.
+1. **Register your [Shikimori Application](https://shikimori.one/oauth/applications):** This will provide you with a `client_id` and `client_secret` that you will need to use OAuth2.
 
 2. **Redirect user to the Shikimori authorization endpoint:** This endpoint will prompt the user to grant your application access to their resources. After the user grants access, Shikimori will redirect them back to your application with an *authorization code*.
 ```
-https://shikimori.me/oauth/authorize?client_id=CLIENT_ID&redirect_uri=REDIRECT_URI&response_type=code&scope=
+https://shikimori.one/oauth/authorize?client_id=CLIENT_ID&redirect_uri=REDIRECT_URI&response_type=code&scope=
 ```
 
 3. **Get an access token:** Your application will need to exchange an *authorization code* for an `AccessToken`. Shikimori will respond with an access token that your application can use to access the restricted resources/endpoints.
@@ -63,7 +63,7 @@ import { auth } from 'node-shikimori';
 
 const { getAccessToken } = auth({
     clientId: 'YOUR_CLIENT_ID',
-    clientSecret: 'YOUR_CLIENT_SECTET',
+    clientSecret: 'YOUR_CLIENT_SECRET',
 });
 
 const accessToken = await getAccessToken('YOUR_AUTH_CODE');
