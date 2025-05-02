@@ -1,6 +1,6 @@
 {
   "name": "node-shikimori",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "A typescript wrapper for the http://shikimori.org API",
   "main": "dist/index.js",
   "typing": "dist/index.d.ts",
