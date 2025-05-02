@@ -4,12 +4,13 @@
   "description": "A typescript wrapper for the http://shikimori.org API",
   "main": "dist/index.js",
   "typing": "dist/index.d.ts",
-  "type": "module",
   "files": [
     "dist"
   ],
   "scripts": {
     "build": "tsup src/index.ts --format esm,cjs --dts",
+    "prettier": "prettier \"src/**/*.{ts,tsx}\" --check",
+    "prettier:fix": "npm run prettier -- --write",
     "docs": "npx typedoc"
   },
   "repository": {
