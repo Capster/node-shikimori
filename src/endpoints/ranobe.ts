@@ -49,49 +49,49 @@ export const ranobe = ({ get }: RequestMethods) => {
    * @param params
    */
   const list = (params: RanobeParams): Promise<RanobeBasic[]> =>
-    get(`/animes`, params);
+    get(`/ranobes`, params);
 
   /**
    * Get a ranobe by `RanobeId`
    * @param params
    */
   const byId = ({ id }: Id<RanobeId>): Promise<Ranobe> =>
-    get(`/animes/${id}`, {});
+    get(`/ranobes/${id}`, {});
 
   /**
    * List ranobe roles
    * @param params
    */
   const roles = ({ id }: Id<RanobeId>): Promise<Role[]> =>
-    get(`/animes/${id}/roles`, {});
+    get(`/ranobes/${id}/roles`, {});
 
   /**
    * List similar ranobe
    * @param params
    */
   const similar = ({ id }: Id<RanobeId>): Promise<RanobeBasic[]> =>
-    get(`/animes/${id}/similar`, {});
+    get(`/ranobes/${id}/similar`, {});
 
   /**
    * List related ranobe
    * @param params
    */
   const related = ({ id }: Id<RanobeId>): Promise<RanobeRelation[]> =>
-    get(`/animes/${id}/relation`, {});
+    get(`/ranobes/${id}/relation`, {});
 
   /**
    * List the whole franchise
    * @param params
    */
   const franchise = ({ id }: Id<RanobeId>): Promise<Franchise> =>
-    get(`/animes/${id}/franchise`, {});
+    get(`/ranobes/${id}/franchise`, {});
 
   /**
    * List external links of a ranobe
    * @param params
    */
   const externalLinks = ({ id }: Id<RanobeId>): Promise<ExternalLink[]> =>
-    get(`/animes/${id}/external_links`, {});
+    get(`/ranobes/${id}/external_links`, {});
 
   /**
    * List ranobe topics
@@ -101,7 +101,7 @@ export const ranobe = ({ get }: RequestMethods) => {
     id,
     ...params
   }: RanobeTopicsParams): Promise<Topic<RanobeBasic>[]> =>
-    get(`/animes/${id}/topics`, params);
+    get(`/ranobes/${id}/topics`, params);
 
   return {
     list,

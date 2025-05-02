@@ -49,49 +49,49 @@ export const mangas = ({ get }: RequestMethods) => {
    * @param params
    */
   const list = (params: MangasParams): Promise<MangaBasic[]> =>
-    get(`/animes`, params);
+    get(`/mangas`, params);
 
   /**
    * Get a manga by `MangaId`
    * @param params
    */
   const byId = ({ id }: Id<MangaId>): Promise<Manga> =>
-    get(`/animes/${id}`, {});
+    get(`/mangas/${id}`, {});
 
   /**
    * List manga roles
    * @param params
    */
   const roles = ({ id }: Id<MangaId>): Promise<Role[]> =>
-    get(`/animes/${id}/roles`, {});
+    get(`/mangas/${id}/roles`, {});
 
   /**
    * List similar manga
    * @param params
    */
   const similar = ({ id }: Id<MangaId>): Promise<MangaBasic[]> =>
-    get(`/animes/${id}/similar`, {});
+    get(`/mangas/${id}/similar`, {});
 
   /**
    * List related manga
    * @param params
    */
   const related = ({ id }: Id<MangaId>): Promise<MangaRelation[]> =>
-    get(`/animes/${id}/relation`, {});
+    get(`/mangas/${id}/relation`, {});
 
   /**
    * List the whole franchise
    * @param params
    */
   const franchise = ({ id }: Id<MangaId>): Promise<Franchise> =>
-    get(`/animes/${id}/franchise`, {});
+    get(`/mangas/${id}/franchise`, {});
 
   /**
    * List external links of a manga
    * @param params
    */
   const externalLinks = ({ id }: Id<MangaId>): Promise<ExternalLink[]> =>
-    get(`/animes/${id}/external_links`, {});
+    get(`/mangas/${id}/external_links`, {});
 
   /**
    * List manga topics
@@ -101,7 +101,7 @@ export const mangas = ({ get }: RequestMethods) => {
     id,
     ...params
   }: MangaTopicsParams): Promise<Topic<MangaBasic>[]> =>
-    get(`/animes/${id}/topics`, params);
+    get(`/mangas/${id}/topics`, params);
 
   return {
     list,
