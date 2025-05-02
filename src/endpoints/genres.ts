@@ -1,5 +1,5 @@
-import { RequestMethods } from '../apiProvider';
-import { Genre } from '../types';
+import { RequestMethods } from "../apiProvider";
+import { Genre } from "../types";
 
 /**
  * Genres
@@ -10,7 +10,7 @@ export const genres = ({ get }: RequestMethods) => {
    * List genres
    * @param params
    */
-  const list = (): Promise<Genre[]> => get('/genre', {});
+  const list = (): Promise<Genre[]> => get("/genres", {});
 
   return { list };
 };
