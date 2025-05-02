@@ -1,9 +1,9 @@
-import { RequestMethods } from '../apiProvider';
-import { UserImage } from '../types';
+import { RequestMethods } from "../apiProvider";
+import { UserImage } from "../types";
 
 export interface UserImagesCreateParams {
-  image: string,
-  linked_type?: string,
+  image: string;
+  linked_type?: string;
 }
 
 /**
@@ -15,9 +15,8 @@ export const userImages = ({ post }: RequestMethods) => {
    * Create a user image
    * @param params
    */
-  const create = (params: UserImagesCreateParams): Promise<UserImage> => (
-    post(`/user_images`, params)
-  );
+  const create = (params: UserImagesCreateParams): Promise<UserImage> =>
+    post(`/user_images`, params);
 
   return { create };
 };

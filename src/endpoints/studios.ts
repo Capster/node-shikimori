@@ -1,5 +1,5 @@
-import { RequestMethods } from '../apiProvider';
-import { Studio } from '../types';
+import { RequestMethods } from "../apiProvider";
+import { Studio } from "../types";
 
 /**
  * Studios
@@ -10,7 +10,7 @@ export const studios = ({ get }: RequestMethods) => {
    * List studios
    * @param params
    */
-  const list = (): Promise<Studio[]> => get('/studios', {});
+  const list = (): Promise<Studio[]> => get("/studios", {});
 
   return { list };
 };

@@ -1,7 +1,7 @@
 import { RequestMethods } from "../apiProvider";
 
 /** @interface */
-export type AppearsParams = Record<'ids', string>;
+export type AppearsParams = Record<"ids", string>;
 
 /**
  * Appear
@@ -12,9 +12,8 @@ export const appears = ({ post }: RequestMethods) => {
    * Mark comments or topics as read
    * @param params
    */
-  const markAsRead = (params: AppearsParams): Promise<null> => (
-    post('/appears', params)
-  );
+  const markAsRead = (params: AppearsParams): Promise<null> =>
+    post("/appears", params);
 
-  return { markAsRead }
+  return { markAsRead };
 };

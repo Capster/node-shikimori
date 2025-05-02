@@ -1,10 +1,10 @@
-import { RequestMethods } from '../apiProvider';
-import { Person, PersonBasic, PersonId, PersonKind } from '../types';
-import { Id } from './common';
+import { RequestMethods } from "../apiProvider";
+import { Person, PersonBasic, PersonId, PersonKind } from "../types";
+import { Id } from "./common";
 
 export interface PeopleSearchParams {
-  search?: string,
-  kind?: PersonKind,
+  search?: string;
+  kind?: PersonKind;
 }
 
 /**
@@ -16,17 +16,15 @@ export const people = ({ get }: RequestMethods) => {
    * Get a person by `PersonId`
    * @param params
    */
-  const byId = ({ id }: Id<PersonId>): Promise<Person> => (
-    get(`/people/${id}`, {})
-  );
+  const byId = ({ id }: Id<PersonId>): Promise<Person> =>
+    get(`/people/${id}`, {});
 
   /**
    * Search people
    * @param params
    */
-  const search = (params: PeopleSearchParams): Promise<PersonBasic[]> => (
-    get('/people', params)
-  );
+  const search = (params: PeopleSearchParams): Promise<PersonBasic[]> =>
+    get("/people", params);
 
   return { byId, search };
 };

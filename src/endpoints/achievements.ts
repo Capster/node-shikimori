@@ -1,8 +1,8 @@
-import { RequestMethods } from '../apiProvider';
-import { Achievement, UserId } from '../types';
+import { RequestMethods } from "../apiProvider";
+import { Achievement, UserId } from "../types";
 
 /** @interface */
-export type AchievementsParams = Record<'user_id', UserId>;
+export type AchievementsParams = Record<"user_id", UserId>;
 
 /**
  * Achievements
@@ -14,9 +14,8 @@ export const achievements = (params: RequestMethods) => {
    * List user achievements
    * @param params
    */
-  const list = (params: AchievementsParams): Promise<Achievement[]> => ( 
-    get('/achievements', params)
-  );
+  const list = (params: AchievementsParams): Promise<Achievement[]> =>
+    get("/achievements", params);
 
-  return { list }
+  return { list };
 };

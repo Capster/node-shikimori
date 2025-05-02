@@ -1,5 +1,5 @@
-import { RequestMethods } from '../apiProvider';
-import { Ban } from '../types';
+import { RequestMethods } from "../apiProvider";
+import { Ban } from "../types";
 
 /**
  * Bans
@@ -10,7 +10,7 @@ export const bans = ({ get }: RequestMethods) => {
    * List bans
    * @param params
    */
-  const list = (): Promise<Ban[]> => get('/bans', {});
+  const list = (): Promise<Ban[]> => get("/bans", {});
 
-  return { list }
+  return { list };
 };

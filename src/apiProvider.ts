@@ -1,29 +1,29 @@
-import { limitedRequest } from './limitedRequest';
+import { limitedRequest } from "./limitedRequest";
 import {
   DEFAULT_USER_AGENT,
   MAX_CALLS_PER_MINUTE,
   MAX_CALLS_PER_SECOND,
-} from './constants';
+} from "./constants";
 
 /** Options for configuring a Shikimori wrapper */
 export interface ClientOptions {
   /** An optional `Token` representing an existing access token to use for authentication */
-  token?: Token,
+  token?: Token;
   /**
    * Represents a user agent used to send requests
    * @defaultValue 'node-shikimori'
    */
-  clientName?: string,
+  clientName?: string;
   /**
    * A number representing the maximum number of API calls allowed per second
    * @defaultValue 5
    */
-  maxCallsPerSecond?: number,
+  maxCallsPerSecond?: number;
   /**
    * A number representing the maximum number of API calls allowed per minute
    * @defaultValue 90
    */
-  maxCallsPerMinute?: number,
+  maxCallsPerMinute?: number;
 }
 
 /**
@@ -33,21 +33,28 @@ export interface ClientOptions {
 export type Token = string | undefined;
 
 /** @interface */
-export type RequestMethods = Record<'get' | 'post' | 'patch' | '_delete', HTTPMethod>;
+export type RequestMethods = Record<
+  "get" | "post" | "patch" | "_delete",
+  HTTPMethod
+>;
 type HTTPMethod = (...args: [path: string, params: any]) => Promise<any>;
 
 interface Params {
   [key: string]: string;
 }
 
-export type RequestMethod = 'GET' | 'POST' | 'PATCH' | 'PUT' | 'DELETE';
-export type RequestHandler = (method: RequestMethod, path: string, params: Params) => Promise<any>;
+export type RequestMethod = "GET" | "POST" | "PATCH" | "PUT" | "DELETE";
+export type RequestHandler = (
+  method: RequestMethod,
+  path: string,
+  params: Params,
+) => Promise<any>;
 
 export const httpMethods = (request: RequestHandler): RequestMethods => ({
-  get: request.bind(null, 'GET'),
-  post: request.bind(null, 'POST'),
-  patch: request.bind(null, 'PATCH'),
-  _delete: request.bind(null, 'DELETE'),
+  get: request.bind(null, "GET"),
+  post: request.bind(null, "POST"),
+  patch: request.bind(null, "PATCH"),
+  _delete: request.bind(null, "DELETE"),
 });
 
 export const apiProvider = ({
@@ -59,8 +66,12 @@ export const apiProvider = ({
   const request = limitedRequest(maxCallsPerSecond, maxCallsPerMinute);
   let accessToken: Token = token;
 
-  const apiRequest: RequestHandler = async (type, endpoint, params): Promise<any> => {
-    const shouldUseBodyParams = type !== 'GET';
+  const apiRequest: RequestHandler = async (
+    type,
+    endpoint,
+    params,
+  ): Promise<any> => {
+    const shouldUseBodyParams = type !== "GET";
 
     let fullPath = `/api${endpoint}`;
 
@@ -70,15 +81,15 @@ export const apiProvider = ({
     }
 
     const headers = new Headers({
-      'User-Agent': clientName,
+      "User-Agent": clientName,
     });
 
     if (accessToken) {
-      headers.set('Authorization', `Bearer ${accessToken}`);
+      headers.set("Authorization", `Bearer ${accessToken}`);
     }
 
     if (shouldUseBodyParams && params) {
-      headers.set('Content-Type', 'application/json');
+      headers.set("Content-Type", "application/json");
     }
 
     return request(fullPath, {

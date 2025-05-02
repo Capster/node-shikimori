@@ -5,29 +5,29 @@ import { request } from "./limitedRequest";
 /** Access Token which represents the access token received from an OAuth2 authentication request */
 export interface AccessToken {
   /** The access token string as issued by the authorization server */
-  access_token: Token,
+  access_token: Token;
   /** A string representing the token type, which is always `"Bearer"` for OAuth2 */
-  token_type: 'Bearer',
+  token_type: "Bearer";
   /** If the access token expires, the server should reply with the duration of time the access token is granted for */
-  expires_in: number,
+  expires_in: number;
   /** Used by clients to exchange a refresh token for an access token when the access token has expired */
-  refresh_token: string,
+  refresh_token: string;
   /** A string representing the scope of the access token */
-  scope: string,
+  scope: string;
   /** A number representing the timestamp at which the access token was created */
-  created_at: number,
+  created_at: number;
 }
 
 /** Represents a set of options required for authenticating a client */
 export interface AuthOptions {
   /** An optional string representing the name of the client (defaults to `node-shikimori`) */
-  clientName?: string,
+  clientName?: string;
   /** A mandatory string representing the unique identifier of the client */
-  clientId: string,
+  clientId: string;
   /** The secret key for authentication */
-  clientSecret: string,
+  clientSecret: string;
   /** An optional string representing the URI to redirect to upon completion of authentication */
-  redirectURI?: string,
+  redirectURI?: string;
 }
 
 /**
@@ -35,14 +35,20 @@ export interface AuthOptions {
  * @param options - Represents a set of options required for authenticating a client
  * @see [OAuth2 Guide](https://shikimori.me/oauth)
  */
-export const auth = ({ clientName, clientId, clientSecret, redirectURI }: AuthOptions) => {
-  const authRequest = (body: BodyInit) => request(TOKEN_PATH, {
-    method: 'POST',
-    headers: {
-      'User-Agent': clientName ?? DEFAULT_USER_AGENT,
-    },
-    body,
-  });
+export const auth = ({
+  clientName,
+  clientId,
+  clientSecret,
+  redirectURI,
+}: AuthOptions) => {
+  const authRequest = (body: BodyInit) =>
+    request(TOKEN_PATH, {
+      method: "POST",
+      headers: {
+        "User-Agent": clientName ?? DEFAULT_USER_AGENT,
+      },
+      body,
+    });
 
   /**
    * Retrieves an access token from an OAuth2 authentication request using the provided authorization code
@@ -51,11 +57,11 @@ export const auth = ({ clientName, clientId, clientSecret, redirectURI }: AuthOp
    */
   const getAccessToken = (authCode: string): Promise<AccessToken> => {
     const body = new URLSearchParams({
-      'grant_type': 'authorization_code',
-      'client_id': clientId,
-      'client_secret': clientSecret,
-      'code': authCode,
-      'redirect_uri': redirectURI ?? 'urn:ietf:wg:oauth:2.0:oob',
+      grant_type: "authorization_code",
+      client_id: clientId,
+      client_secret: clientSecret,
+      code: authCode,
+      redirect_uri: redirectURI ?? "urn:ietf:wg:oauth:2.0:oob",
     });
 
     return authRequest(body);
@@ -68,10 +74,10 @@ export const auth = ({ clientName, clientId, clientSecret, redirectURI }: AuthOp
    */
   const refreshAccessToken = (refreshToken: string): Promise<AccessToken> => {
     const body = new URLSearchParams({
-      'grant_type': 'refresh_token',
-      'client_id': clientId,
-      'client_secret': clientSecret,
-      'refresh_token': refreshToken,
+      grant_type: "refresh_token",
+      client_id: clientId,
+      client_secret: clientSecret,
+      refresh_token: refreshToken,
     });
 
     return authRequest(body);
