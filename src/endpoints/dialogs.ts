@@ -1,6 +1,6 @@
-import { Id } from './common';
-import { RequestMethods } from '../apiProvider';
-import { Dialog, Message, DialogId, Notice } from '../types';
+import { Id } from "./common";
+import { RequestMethods } from "../apiProvider";
+import { Dialog, Message, DialogId, Notice } from "../types";
 
 /**
  * Dialogs
@@ -13,7 +13,7 @@ export const dialogs = ({ get, _delete }: RequestMethods) => {
    * Requires `messages` oauth scope
    * @param params
    */
-  const list = (): Promise<Dialog[]> => get('/dialogs', {});
+  const list = (): Promise<Dialog[]> => get("/dialogs", {});
 
   /**
    * List messages from a certain dialog
@@ -21,7 +21,8 @@ export const dialogs = ({ get, _delete }: RequestMethods) => {
    * Requires `messages` oauth scope
    * @param params
    */
-  const byId = ({ id }: Id<DialogId>): Promise<Message[]> => get(`/dialogs/${id}`, {});
+  const byId = ({ id }: Id<DialogId>): Promise<Message[]> =>
+    get(`/dialogs/${id}`, {});
 
   /**
    * Delete a dialog
@@ -29,7 +30,8 @@ export const dialogs = ({ get, _delete }: RequestMethods) => {
    * Requires `messages` oauth scope
    * @param params
    */
-  const destroy = ({ id }: Id<DialogId>): Promise<Notice> => _delete(`/dialogs/${id}`, {});
+  const destroy = ({ id }: Id<DialogId>): Promise<Notice> =>
+    _delete(`/dialogs/${id}`, {});
 
   return {
     list,

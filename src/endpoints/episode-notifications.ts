@@ -1,9 +1,9 @@
-import { RequestMethods } from '../apiProvider';
-import { EpisodeNotification, EpisodeNotificationTemplate } from '../types';
+import { RequestMethods } from "../apiProvider";
+import { EpisodeNotification, EpisodeNotificationTemplate } from "../types";
 
 export interface EpisodeNotificationsParams {
-  episode_notification: EpisodeNotificationTemplate,
-  token: string,
+  episode_notification: EpisodeNotificationTemplate;
+  token: string;
 }
 
 /**
@@ -17,9 +17,9 @@ export const episodeNotifications = ({ post }: RequestMethods) => {
    * This API requires a special token
    * @param params
    */
-  const list = (params: EpisodeNotificationsParams): Promise<EpisodeNotification> => (
-    post('/v2/episode_notifications', params)
-  );
+  const list = (
+    params: EpisodeNotificationsParams,
+  ): Promise<EpisodeNotification> => post("/v2/episode_notifications", params);
 
   return { list };
 };

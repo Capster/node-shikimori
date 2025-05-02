@@ -1,31 +1,31 @@
-import { RequestMethods } from '../apiProvider';
-import { Id } from './common';
+import { RequestMethods } from "../apiProvider";
+import { Id } from "./common";
 import {
   Notice,
   Comment,
   CommentId,
   CommentTemplate,
   CommentableType,
-} from '../types';
+} from "../types";
 
 export interface CommentsParams {
-  commentable_id: number,
-  commentable_type: CommentableType,
-  page?: number,
-  limit?: number,
-  desc?: 1 | 0,
+  commentable_id: number;
+  commentable_type: CommentableType;
+  page?: number;
+  limit?: number;
+  desc?: 1 | 0;
 }
 
 export interface CommentsCreateParams {
-  comment?: CommentTemplate,
-  frontend?: boolean,
-  broadcast?: boolean,
+  comment?: CommentTemplate;
+  frontend?: boolean;
+  broadcast?: boolean;
 }
 
 export interface CommentsUpdateParams {
-  id: CommentId,
-  comment?: Record<'body', string>,
-  frontend?: boolean,
+  id: CommentId;
+  comment?: Record<"body", string>;
+  frontend?: boolean;
 }
 
 /**
@@ -37,41 +37,36 @@ export const comments = ({ get, post, patch, _delete }: RequestMethods) => {
    * List comments
    * @param params
    */
-  const list = (params: CommentsParams): Promise<Comment[]> => (
-    get('/comments', params)
-  );
+  const list = (params: CommentsParams): Promise<Comment[]> =>
+    get("/comments", params);
 
   /**
    * Get a comment by `CommentId`
    * @param params
    */
-  const byId = ({ id }: Id<CommentId>): Promise<Comment> => (
-    get(`/comments/${id}`, {})
-  );
+  const byId = ({ id }: Id<CommentId>): Promise<Comment> =>
+    get(`/comments/${id}`, {});
 
   /**
    * Create a comment
    * @param params
    */
-  const create = (params: CommentsCreateParams): Promise<Comment> => (
-    post('/comments', params)
-  );
+  const create = (params: CommentsCreateParams): Promise<Comment> =>
+    post("/comments", params);
 
   /**
    * Update a comment
    * @param params
    */
-  const update = ({ id, ...params }: CommentsUpdateParams): Promise<Comment> => (
-    patch(`/comments/${id}`, params)
-  );
+  const update = ({ id, ...params }: CommentsUpdateParams): Promise<Comment> =>
+    patch(`/comments/${id}`, params);
 
   /**
    * Delete a comment
    * @param params
    */
-  const destroy = ({ id }: Id<CommentId>): Promise<Notice> => (
-    _delete(`/comments/${id}`, {})
-  );
+  const destroy = ({ id }: Id<CommentId>): Promise<Notice> =>
+    _delete(`/comments/${id}`, {});
 
   return {
     list,

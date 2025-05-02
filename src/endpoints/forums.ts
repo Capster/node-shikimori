@@ -1,5 +1,5 @@
-import { RequestMethods } from '../apiProvider';
-import { Forum } from '../types';
+import { RequestMethods } from "../apiProvider";
+import { Forum } from "../types";
 
 /**
  * Forums
@@ -10,7 +10,7 @@ export const forums = ({ get }: RequestMethods) => {
    * List forums
    * @param params
    */
-  const list = (): Promise<Forum[]> => get('/forums', {});
+  const list = (): Promise<Forum[]> => get("/forums", {});
 
   return { list };
 };

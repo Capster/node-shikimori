@@ -1,5 +1,5 @@
-import { RequestMethods } from '../apiProvider';
-import { Publisher } from '../types';
+import { RequestMethods } from "../apiProvider";
+import { Publisher } from "../types";
 
 /**
  * Publishers
@@ -10,7 +10,7 @@ export const publishers = ({ get }: RequestMethods) => {
    * List publishers
    * @param params
    */
-  const list = (): Promise<Publisher[]> => get('/publishers', {});
+  const list = (): Promise<Publisher[]> => get("/publishers", {});
 
-  return { list }
+  return { list };
 };

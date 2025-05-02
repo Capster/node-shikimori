@@ -1,4 +1,4 @@
-import { ClientOptions, apiProvider, httpMethods } from './apiProvider';
+import { ClientOptions, apiProvider, httpMethods } from "./apiProvider";
 import {
   abuseRequests,
   achievements,
@@ -31,7 +31,7 @@ import {
   userRates,
   users,
   videos,
-} from './endpoints';
+} from "./endpoints";
 
 /**
  * A Shikimori API wrapper that provides methods for interacting with various endpoints

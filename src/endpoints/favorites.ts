@@ -1,23 +1,33 @@
-import { RequestMethods } from '../apiProvider';
-import { NoticeSuccess } from '../types';
+import { RequestMethods } from "../apiProvider";
+import { NoticeSuccess } from "../types";
 
-export type FavoritesLinkedType = 'Anime' | 'Manga' | 'Ranobe' | 'Person' | 'Character';
-export type FavoritesKind = 'common' | 'seyu' | 'mangaka' | 'producer' | 'person';
+export type FavoritesLinkedType =
+  | "Anime"
+  | "Manga"
+  | "Ranobe"
+  | "Person"
+  | "Character";
+export type FavoritesKind =
+  | "common"
+  | "seyu"
+  | "mangaka"
+  | "producer"
+  | "person";
 
 export interface FavoritesCreateParams {
-  linked_id: number,
-  linked_type: FavoritesLinkedType,
-  kind?: FavoritesKind,
+  linked_id: number;
+  linked_type: FavoritesLinkedType;
+  kind?: FavoritesKind;
 }
 
 export interface FavoritesDestroyParams {
-  linked_id: number,
-  linked_type: FavoritesLinkedType,
+  linked_id: number;
+  linked_type: FavoritesLinkedType;
 }
 
 export interface FavoritesReorderParams {
-  id: number,
-  new_index: FavoritesLinkedType,
+  id: number;
+  new_index: FavoritesLinkedType;
 }
 
 /**
@@ -34,7 +44,7 @@ export const favorites = ({ get, post, _delete }: RequestMethods) => {
     linked_type,
     kind,
   }: FavoritesCreateParams): Promise<NoticeSuccess> => {
-    const favoritesKind = kind ? `/${kind}` : '';
+    const favoritesKind = kind ? `/${kind}` : "";
     return get(`/favorites/${linked_type}/${linked_id}${favoritesKind}`, {});
   };
 
@@ -45,17 +55,15 @@ export const favorites = ({ get, post, _delete }: RequestMethods) => {
   const destroy = ({
     linked_type,
     linked_id,
-  }: FavoritesDestroyParams): Promise<NoticeSuccess> => (
-    _delete(`/favorites/${linked_type}/${linked_id}`, {})
-  );
+  }: FavoritesDestroyParams): Promise<NoticeSuccess> =>
+    _delete(`/favorites/${linked_type}/${linked_id}`, {});
 
   /**
    * Assign a new position to a favorite
    * @param params
    */
-  const reorder = ({ id, ...params }: FavoritesReorderParams): Promise<void> => (
-    post(`/favorites/${id}/reorder`, params)
-  );
+  const reorder = ({ id, ...params }: FavoritesReorderParams): Promise<void> =>
+    post(`/favorites/${id}/reorder`, params);
 
   return {
     create,

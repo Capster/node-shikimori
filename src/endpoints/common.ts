@@ -3,4 +3,4 @@
  * This type is commonly used to represent Shikimori entities with unique identifiers
  * @template T The type of the 'id' property
  */
-export type Id<T> = Record<'id', T>;
+export type Id<T> = Record<"id", T>;

@@ -1,11 +1,14 @@
 import { BASE_URL } from "./constants";
 import { APIError } from "./error";
 
-export const request = async (path: string, options: RequestInit): Promise<any> => {
+export const request = async (
+  path: string,
+  options: RequestInit,
+): Promise<any> => {
   const url = new URL(path, BASE_URL);
   const response = await fetch(url, options);
   if (!response.ok) {
-    throw new APIError('Bad response', response);
+    throw new APIError("Bad response", response);
   }
   const text = await response.text();
   return JSON.parse(text) ?? null;
@@ -14,7 +17,10 @@ export const request = async (path: string, options: RequestInit): Promise<any> 
 const MILLISECONDS_IN_SECOND = 1_000;
 const MILLISECONDS_IN_MINUTE = MILLISECONDS_IN_SECOND * 60;
 
-export const limitedRequest = (maxCallsPerSecond: number, maxCallsPerMinute: number) => {
+export const limitedRequest = (
+  maxCallsPerSecond: number,
+  maxCallsPerMinute: number,
+) => {
   let secondFetchCount = 0;
   let minuteFetchCount = 0;
   let secondStart = Date.now();
@@ -37,13 +43,13 @@ export const limitedRequest = (maxCallsPerSecond: number, maxCallsPerMinute: num
     minuteFetchCount++;
 
     if (secondFetchCount > maxCallsPerSecond) {
-      throw new APIError('Maximum fetch requests per second exceeded', null);
+      throw new APIError("Maximum fetch requests per second exceeded", null);
     }
 
     if (minuteFetchCount > maxCallsPerMinute) {
-      throw new APIError('Maximum fetch requests per minute exceeded', null);
+      throw new APIError("Maximum fetch requests per minute exceeded", null);
     }
 
     return request(path, options);
-  }
-}
+  };
+};
