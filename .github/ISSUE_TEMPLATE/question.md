@@ -1,6 +1,6 @@
 ---
 name: Question
-about: 'Ask a question (можно на русском или на английском) '
+about: Ask a question/Задать вопрос
 title: ''
 labels: question
 assignees: Capster

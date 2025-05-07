@@ -1,6 +1,6 @@
 ---
 name: Bug report
-about: Report a bug (можно на русском или на английском)
+about: Report a bug/Сообщить о баге
 title: ''
 labels: bug
 assignees: Capster

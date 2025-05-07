@@ -1,6 +1,6 @@
 ---
 name: Feature request
-about: Suggest an idea (можно на русском или на английском)
+about: Suggest an idea/Предложить идею
 title: ''
 labels: enhancement
 assignees: Capster
