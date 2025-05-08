@@ -22,6 +22,12 @@ export interface UsersListParams {
   limit?: number;
 }
 
+export interface FriendsListParams {
+  id: UserId;
+  page?: number;
+  limit?: number;
+}
+
 export interface UsersByIdParams {
   id: number | string;
   is_nickname?: boolean;
@@ -95,8 +101,11 @@ export const users = ({ get, post }: RequestMethods) => {
    * List user's friends
    * @param params
    */
-  const friends = ({ id }: Id<UserId>): Promise<UserBasic[]> =>
-    get(`/users/${id}/friends`, {});
+  const friends = ({
+    id,
+    ...params
+  }: FriendsListParams): Promise<UserBasic[]> =>
+    get(`/users/${id}/friends`, params);
 
   /**
    * List user's clubs
