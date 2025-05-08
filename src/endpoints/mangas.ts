@@ -24,6 +24,7 @@ export interface MangasParams {
   season?: string;
   score?: number;
   genre?: string;
+  genre_v2?: string;
   publisher?: string;
   franchise?: string;
   censored?: boolean;
