@@ -30,6 +30,7 @@ export interface AnimesParams {
   duration?: AnimeDuration;
   rating?: AnimeRating;
   genre?: string;
+  genre_v2?: string;
   studio?: string;
   franchise?: string;
   censored?: boolean;
