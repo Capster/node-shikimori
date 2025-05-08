@@ -57,7 +57,7 @@ export interface UsersHistoryParams {
  * Users
  * @param methods
  */
-export const users = ({ get }: RequestMethods) => {
+export const users = ({ get, post }: RequestMethods) => {
   /**
    * List users
    * @param params
@@ -89,7 +89,7 @@ export const users = ({ get }: RequestMethods) => {
    * Sign out from an account
    * @param params
    */
-  const signOut = (): Promise<string> => get(`/users/sign_out`, {});
+  const signOut = (): Promise<string> => post(`/users/sign_out`, {});
 
   /**
    * List user's friends
